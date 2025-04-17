@@ -1,26 +1,25 @@
 ﻿
+
+#main.coffee
 tick = ()->
   for name, surface of surfaces
-    surface.context.clearRect 0, 0, width, height
     surface.render? surface.context if surface.dirty
     surface.dirty = false
     surface.simulate?()
   worldTime += dt
-  setTimeout(tick, dt)
+  requestAnimationFrame(tick)
 
 start = (c)->
   container = c
   setupSurface surface for name, surface of surfaces
-  resize()
+  surfaces.nebula.canvas.style.filter = "blur(10px)"
 
-  for i in [0..500]
-    stars.push
-      x: Math.random() * 1920
-      y: Math.random() * 1080
-      size: Math.random() * 10
-      hue: Math.random() * 360
+  window.addEventListener "resize", requestResize
+  window.addEventListener "scroll", mouseScroll
+  resize()
+  
       
-  setTimeout(tick, 0)
+  requestAnimationFrame(tick)
     
 Stars = ()->
   start: start
