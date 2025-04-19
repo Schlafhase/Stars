@@ -1,4 +1,4 @@
-﻿This is a program which procedurally generates an image of stars with space nebula
+This is a program which procedurally generates an image of stars with nebula
 in front of the stars. I made this for my homepage.
 
 ## Credits
